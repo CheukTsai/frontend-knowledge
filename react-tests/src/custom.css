@@ -1,0 +1,54 @@
+.page {
+    height: 100%;
+    width: 100vw;
+}
+
+/* .box2 {
+    height: 200px;
+    width: 200px;
+    border: 2px solid;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+} */
+
+.box1 {
+    height: 100px;
+    width: 100px;
+    border: 2px solid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: red;
+}
+
+/* .box2 {
+    height: 50%;
+    width: 50%;
+    float: left;
+    background: blue;
+}
+
+.box3 {
+    height: 50%;
+    width: 50%;
+    float: left;
+    background: green;
+} */
+
+/* .box3 {
+    height: 200px;
+    width: 200px;
+    border: 1px solid pink;
+    position: absolute;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+} */
+

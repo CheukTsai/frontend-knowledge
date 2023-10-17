@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+}
+
+.box {
+  width: 30%;
+  border: 3px solid;
+}
+
+.box>p {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
