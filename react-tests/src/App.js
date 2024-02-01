@@ -23,6 +23,7 @@ function App() {
         </div>
         <a href="/pagination">pagination</a>
         <a href="/countdown"> countdown </a>
+        <a href="/tzfe"> 2048 </a>
       </div>
     </div>
   );

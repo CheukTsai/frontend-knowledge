@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * 定义myCall方法
+         * 
+         * 设置this并调用原函数
+         * 
+         * 接收剩余参数并返回结果
+         * 
+         * 使用Symbol调优
+         * */
+
+         // ---------------- implementation --------------------
+
+         // 1. 定义myCall方法
+         Function.prototype.myCall = function(thisArg, ...args) {
+            
+            // 2. 设置this并调用原函数
+            // thisArg传入的设置为this的对象
+            // this原函数（原函数.myCall）
+            // （有缺点）—— 要给thisArg取一个河源属性不重名的新属性
+            // Symbol —— 每个Symbol()产生的symbol是唯一的
+            const key = Symbol('key')
+            thisArg[key] = this
+            const res = thisArg[key](...args)
+            // 但是this会多出一个f函数，因此需要删掉
+            delete thisArg[key]
+            return res;
+         }
+
+         // ---------------- test case 1 -------------------------
+
+        function func(numA, numB) {
+            console.log(this)
+            console.log(numA, numB)
+            return numA + numB
+        }
+
+        const person = {
+            name: 'Tsai'
+        }  
+
+        const res = func.myCall(person, 2, 8)
+        console.log("Return:", res)
+
+        // ---------------- test Symbol() 1 -------------------------
+
+        // const s1 = Symbol('key');
+        // const s2 = Symbol('key');
+        // console.log(s1 === s2);
+
+    </script>
+</body>
+</html>

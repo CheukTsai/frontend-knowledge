@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Fetch submit JSON</h2>
+    <button class="btn">submit json</button>
+    <script>
+        /**
+         * fetch提交formData
+         * 1. 如何设置请求头
+         * */
+
+
+        document.querySelector('.btn').addEventListener('click', async function() {
+            // 实例化Headers对象
+            const headers = new Headers();
+            // Append添加key value
+            headers.append('content-type', 'application/json')
+
+            const res = await fetch('http://hmajax.itheima.net/api/register', {
+                method:'post',
+                // 对象 -> JSON
+                body:JSON.stringify({username: 'helloabcsdadad2e', password: '123456'}),
+                headers: headers
+            })
+            const data = await res.json();
+            console.log(data);
+        })
+
+    </script>
+</body>
+</html>

@@ -23,7 +23,7 @@ const EventUntils = {
 
     getTarget: function(event) {
         // srcElement is deprecated
-        return event.target || event.srcElement;
+        return event.target;
     },
 
     getEvent: function(event) {

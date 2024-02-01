@@ -8,7 +8,9 @@ import {
 } from "react-router-dom";
 import Pagination from './Pagination';
 import CSS from './CSS';
-import CountDown from './CountDown';
+// import CountDown from './CountDown';
+import CountDown from './CountDown2';
+import Tzfe from './Tzfe';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,9 @@ const router = createBrowserRouter([
 },
   {path: "/countdown",
   element: <CountDown />
+},{
+  path: "/tzfe",
+  element:<Tzfe />
 }
 ]);
 

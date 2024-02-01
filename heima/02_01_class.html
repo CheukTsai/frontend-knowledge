@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class</title>
+</head>
+<body>
+    <script>
+        class Person {
+            // 1. 公有属性
+            name
+
+            // 定义属性并设置默认值
+            age = 18
+
+            // 2. 构造函数
+            constructor(name) {
+                this.name = name
+
+                // 动态添加属性（不推荐）
+                this.foods = ["burger", "egg"]
+            }
+
+            // 3. 共有方法
+            sayHi() {
+                console.log(`Hi I am ${this.name}`)
+                console.log(this)
+            }
+        }
+
+        const person = new Person("Tsai");
+        person.sayHi();
+
+        // ------------------ 子类 ------------------------
+
+        class Student extends Person{
+            constructor(name, age) {
+                // 必须要调用super
+                super(name)
+                this.age = age
+            }
+
+            sayHello() {
+                console.log(`Hi I am ${this.name}, and I am ${this.age}`)
+            }
+        }
+
+        // const s = new Student("student");
+        const s = new Student("student", 19);
+
+        s.sayHi()
+        s.sayHello()
+
+        
+    </script>
+</body>
+</html>

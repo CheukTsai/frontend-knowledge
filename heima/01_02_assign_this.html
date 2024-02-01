@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /**
+         * how to assign this:
+         * 1. assign when calling
+         * 2. assign when initiating
+         * */
+        
+         // ---------- 1. assign when calling ----------
+
+         function func(numA, numB) {
+            console.log(this)
+            console.log(numA, numB)
+        }
+
+        const person = {
+            name: 'Tsai'
+        }         
+        // 1.1 call挨个传入参数
+        // func.call(person,3,4)
+        
+        // 1.2 apply:以数组的方式传入参数
+        // func.apply(person,[3,4])
+
+        // -------- 2. assign this --------
+       
+
+        // 2.1 bind
+        // const bindFunc = func.bind(person, 666);
+        // bindFunc(888)
+        
+        // 2.2 箭头函数
+        const food = {
+            name: 'Burger',
+            eat() {
+                console.log(this)
+                setTimeout(() => {
+                    // 箭头函数的this去上一级作用域去找
+                    console.log(this)
+                },1000)
+                // setTimeout(function() {
+                //     console.log(this) // window
+                // }, 1000)
+            }
+        }
+
+        food.eat()
+    </script>
+</body>
+</html>

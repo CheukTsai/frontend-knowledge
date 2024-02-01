@@ -1,6 +1,7 @@
 class EventEmitter {
+    events = {};
     constructor() {
-        this.events = {};
+        
     }
 
     on(event, callback) {

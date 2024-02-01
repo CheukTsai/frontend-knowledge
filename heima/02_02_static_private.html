@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static & Private</title>
+</head>
+<body>
+    <script>
+        /**
+         * 
+         * 静态属性
+         * 定义时：static开头
+         * 访问时，通过类来访问
+         * 私有属性
+         * 定义时：#开头
+         * 使用时：#开头，和定义的名字相同，只能在类的内部使用
+         * */
+
+         class Test {
+            static stInfo = "i am static";
+            static stMethod() {
+                console.log('I am static method')
+            }
+
+            // private
+            // chrome可以直接访问
+            #prInfo = "I am private";
+            #prMethod() {
+                console.log("I am private method");
+            }
+
+            publicMethod() {
+                console.log(this.#prInfo);
+                this.#prMethod();
+            }
+         }
+
+         console.log(Test.stInfo);
+         Test.stMethod();
+
+         const t = new Test();
+         t.publicMethod();
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    /* * {
+        font-weight: 2000;
+    } */
+    #text {
+        color: red;
+    }
+    .text {
+        color: blue;
+    }
+    h1{
+        color: green;
+    }
+    div h3 {
+        color: tomato;
+    }
+    div>h4 {
+        color: tan;
+    }
+    li:nth-child(2) {
+        color: saddlebrown;
+    }
+    h4~h5 {
+        color: purple;
+    }
+    h5+h6 {
+        color: plum;
+    }
+    .ptest::first-line {
+        color: blue;
+    }
+    button:hover {
+        background-color: brown;
+    }
+    body {
+        display: flex;
+        flex-direction: row;
+        gap: 300px;
+    }
+    p { 
+        color: goldenrod;
+    }
+    .test1 {
+        color: aqua;
+    }
+
+    #test1 {
+        color: blueviolet;
+    }
+    .test2::first-letter {
+        color: orange
+    }
+    .test2 {
+        color: red !important;
+    }
+
+</style>
+<body>
+    <div>
+        <h1>(tag selector) h1</h1>
+        <h2 id="text">(id selector) #text</h2>
+        <h2 class="text">(class selector) .text</h2>
+        <h3>(child selector) div h3</h3>
+        <h4>(相邻child selector) div>h4</h4>
+        <span>
+            <h4>(非相邻child selector) 被span包围 div>h4 不起作用</h4>
+        </span>
+        <h5>(兄弟选择器) h4~h5</h5>
+        <h6>(相邻兄弟选择器) h5+h6</h6>
+        <h6>(非相邻兄弟选择器) h5+h6 不起作用</h6>
+        <button>(伪类选择器) button:hover</button>
+        <ul>
+            <li>(伪类选择器) li:nth-child(2)</li>
+            <li>(伪类选择器) li:nth-child(2)</li>
+            <li>(伪类选择器) li:nth-child(2)</li>
+        </ul>
+        <div style="width: 200px; height: 100px; border: 1px black solid;">
+            <p class="ptest" style="word-wrap: break-word;">(伪元素选择器) .ptest::firstline sdjhsdakdhsdjds ahkdsajhdsak</p>
+        </div>
+    </div>
+    <div>
+        <h1>优先级算法</h1>
+        p{color: goldenrod;} .test1 {color: aqua;} #test1 {color: blueviolet;} .test2::first-letter {color: orange} .test2 {color: red !important;}
+        
+        <p id="test1" class="test1">p id="test1" class="test1" id最高</p>
+        <p class="test1">p class="test1" 接着为class</p>
+        <p>p 然后是类型</p>
+        <p id="test1" class="test2">p id="test1" class="test2" 和伪元素</p>
+        <p id="test1" class="test2">注意： !important没有特殊性，但是拥有最高优先级</p>
+        根据样式引入的顺序，后声明的规则优先级高
+
+    </div>
+    
+
+</body>
+</html>

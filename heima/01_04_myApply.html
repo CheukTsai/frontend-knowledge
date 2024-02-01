@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Apply</title>
+</head>
+<body>
+    <script>
+        /**
+         * 定义myApply方法
+         * 
+         * 设置this并调用原函数 (使用Symbol调优)
+         * 
+         * 接收参数并返回结果
+         * 
+         * */
+
+         // ---------------- implementation --------------------
+
+         // 1. 定义myCall方法
+         Function.prototype.myApply = function(thisArg, args=[]) {
+            
+            // 2. 设置this并调用原函数
+            const key = Symbol('key');
+            thisArg[key] = this
+            const res = thisArg[key](...args)
+            delete thisArg[key]
+            return res
+         }
+
+         // ---------------- test case 1 -------------------------
+
+        function func(numA, numB) {
+            console.log(this)
+            console.log(numA, numB)
+            return numA + numB
+        }
+
+        const person = {
+            name: 'Tsai'
+        }  
+
+        const res = func.myApply(person, [2, 8])
+        console.log("Return:", res)
+
+        // ---------------- test Symbol() 1 -------------------------
+
+        // const s1 = Symbol('key');
+        // const s2 = Symbol('key');
+        // console.log(s1 === s2);
+
+    </script>
+</body>
+</html>

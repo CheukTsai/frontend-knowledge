@@ -2,55 +2,45 @@ import {useRef, useEffect, useState} from 'react';
 
 export default function CountDown() {
     const [inputValue, setInputValue] = useState("");
-    const [intervalId, setIntervalId] = useState(null);
 
     const ref = useRef(null);
 
-    const [timer, setTimer] = useState("00:00:00");
+    const [timer, setTimer] = useState("00:00");
 
-    function handleSubmit(e) {
-        e.preventDefault();
-
-        if (ref.current) {
-            clearInterval(ref.current);
-          }
-        let deadline = new Date();
-        deadline = deadline.setSeconds(deadline.getSeconds() + 10);
-        const newIntervalId = setInterval(() => {
-            let diff = deadline - Date.parse(new Date());
-            console.log(diff);
-            if (diff >= 0) {
-                setTimer(getTimeRemaining(diff));
+    function handleClick() {
+        if (ref.current) clearInterval(ref.current)
+        setInputValue("");
+        let remainingTime = inputValue;
+        let interval = setInterval(() => {
+            if (remainingTime <= 0) {
+                clearInterval(interval);
+                ref.current = null;
+            } else {
+                remainingTime--;
+                setTimer(transformRemaingTime(remainingTime));
             }
-          }, 1000);
-        
-        ref.current = newIntervalId;
+            
+        }, 1000);
+
+        ref.current = interval;
+
     }
 
-    function getTimeRemaining(diff) {
-        
-        let seconds = Math.floor((diff / 1000) % 60);
-        let minutes = Math.floor((diff / 1000 / 60) % 60);
-        let hours = Math.floor((diff / 1000 / 60 / 60));
-
-        let hoursStr = hours > 9 ? hours.toString() : '0' + hours;
-        let minutesStr = minutes > 9 ? minutes.toString() : '0' + minutes;
-        let secondsStr = seconds > 9 ? seconds.toString() : '0' + seconds;
-        
-        return hoursStr + ':' + minutesStr + ':' + secondsStr;
+    function transformRemaingTime(remainingTime) {
+        let min = Math.floor(remainingTime / 60);
+        let sec = remainingTime - 60 * min;
+        return min + ":" + sec;
     }
 
     return (
         <div>
             <h1>CountDown: {timer}</h1>
-            <form onSubmit={handleSubmit}>
             <input 
                 type="text"
                 value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
+                onChange={e => setInputValue(parseInt(e.target.value))}
             />
-            <button type="submit"> Submit </button>
-            </form>
+            <button onClick={handleClick}> Submit </button>
             
         </div>
     );

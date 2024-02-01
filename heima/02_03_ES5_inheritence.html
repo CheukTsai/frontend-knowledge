@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // -------------- 父类 -----------------
+
+        function Person(name) {
+            this.name = name;
+        }
+
+        Person.prototype.sayHi = function() {
+            console.log(`Hi, I am ${this.name}`)
+        }        
+
+        // ---------------- 寄生组合式继承 -----------------
+        // 通过构造函数来继承属性
+        
+        function Student(name){
+            Person.call(this, name);
+        }
+
+        // 通过原型链来继承方法
+        // const prototype = Object.create( Person.prototype );
+        // 但是为了继承的constructor为新的类，需要覆盖constructor的值
+        const prototype = Object.create( Person.prototype, {
+            constructor: {
+                value: Student
+            }
+        } );
+
+        // 创建的原型赋值给子类的原型
+        Student.prototype = prototype;
+        
+        const s = new Student('Tsai');
+        s.sayHi();
+
+
+        // ---------------- Object.create 测试 -----------------
+        // 将一个对象作为原型，创建一个新的对象
+        const food = {
+            name: 'burger',
+            eat() {
+                console.log(`${this.name} is yummy`);
+            }
+        }
+        // Object.create 静态方法
+        // 讲一个对象作为原型，创建一个新的对象
+        // 参数1：源对象
+        // 参数2：可以用来覆盖源对象中的特定属性、方法
+        const nFood = Object.create(food);
+
+        //
+        const overrideFood = Object.create(food, {
+            name: {
+                value: "fries"
+            },
+            eat: {
+                value() {
+                    console.log(`${this.name} is super yummy`);
+                }
+            }
+        });
+
+        // console.log(overrideFood.eat());
+    </script>
+</body>
+</html>

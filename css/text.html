@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #demo1 {
+        border: 1px black solid;
+        width: 200px;
+        height: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-bottom: 20px;
+    }
+    #demo2 {
+        border: 1px black solid;
+        width: 300px;
+        height: 400px;
+
+    }
+    p {
+        position: relative;
+        line-height: 1em;
+        height: 2em;
+        overflow: hidden;
+        word-break: break-all;
+    }
+
+    p:after {
+        content: '...';
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        background-color: white;
+        width: 2em;
+    }
+</style>
+<body>
+    <div id="demo1">
+        <h2>单行文本溢出</h2>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut numquam iusto, placeat aperiam autem beatae, nemo veniam itaque reprehenderit vitae et esse nobis accusantium, minima optio? Est facilis impedit atque?
+    </div>
+    <div id="demo2">
+        <h2>多行文本溢出</h2>
+        重点：
+        <ul>
+            <li>word-break: break-all</li>
+            <li>overflow: hidden</li>
+            <li>p的line height和height成比例（如两行则为2:1）</li>
+            <li>p:after加上后面的内容</li>
+            <li>content:"..."然后用一块纯白的...盖住后面的字</li>
+            <li>button:0; right: 0; postion: absolute</li>
+        </ul>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt, assumenda in veritatis ea illum debitis molestiae nemo reiciendis ab. Vitae sapiente mollitia et modi rem aliquid, ullam laborum dicta porro?</p>
+    </div>
+</body>
+</html>

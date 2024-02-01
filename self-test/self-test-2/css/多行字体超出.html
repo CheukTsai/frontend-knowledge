@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    #box {
+        width: 100px;
+        height: 100px;
+        border: 1px black solid;
+        overflow: hidden;
+        padding: 0;
+    }
+    #box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto
+    }
+    #box>p {
+        
+        line-height: 1em;
+        height: 2em;
+        word-break: break-all;
+    }
+
+    #box>p::after {
+        content: "...";
+        position: absolute;
+        right: 0em;
+        bottom: 0.1em;
+        background-color: white;
+        width: 2.1em;
+    }
+
+</style>
+<body>
+    <div id="box">
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tempora excepturi aspernatur ipsa ut! Commodi, facilis. Natus fuga delectus, animi ullam obcaecati molestiae iste voluptatibus adipisci, perferendis asperiores sit cumque? Eos?</p>        
+    </div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Fetch submit formData</h2>
+    <!-- 选择图片 -->
+    <input type="file" class="ipt">
+    <!-- 图片回显 -->
+    <img class="icon" src="" alt="">
+    <script>
+        /**
+         * fetch提交formData
+         * 1. 如何设置请求方法
+         * 2. 如何提交数据
+         * */
+
+
+        document.querySelector('.ipt').addEventListener('change', async function() {
+            
+            const img = this.files[0];
+            const data = new FormData();
+            data.append('img', img);
+
+            const res = await fetch('http://hmajax.itheima.net/api/uploadimg', {
+                method: 'post',
+                body: data
+            })
+
+            const resData = await res.json();
+            console.log(resData);  
+            // 回显          
+            document.querySelector('.icon').src = resData.data.url
+        })
+
+    </script>
+</body>
+</html>

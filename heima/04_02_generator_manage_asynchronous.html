@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Manage Async</title>
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+        
+
+        // 1. 定义生成器函数
+        function* cityGenerator() {
+            yield axios('http://hmajax.itheima.net/api/city?pname=北京');
+            yield axios('http://hmajax.itheima.net/api/city?pname=广东省');
+        }
+
+        // 2. 获取Generator对象
+        const city = cityGenerator();
+
+        // 3. next方法
+        // {value: yield之后的值, done: false/true}
+
+        /**
+         * {value: Promise, done: false}
+            done: false
+            value: Promise {<fulfilled>: {…}}
+            [[Prototype]]: Object
+         * */
+
+        // done：是否执行完毕，false可以继续，true执行完毕
+        // value：yield后的值
+        // 从上往下
+        city.next().value.then(res => {
+            console.log('res:', res);
+            return city.next().value
+        }).then(res => {
+            console.log('res2:', res);
+        })
+
+    </script>
+</body>
+</html>

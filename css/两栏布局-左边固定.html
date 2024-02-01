@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        height: 50%;
+        width: 100%;
+        border: 10px black solid;
+    }
+    #left1 {
+        float: left;
+        height: 100%;
+        width: 100px;
+        background-color: tomato;
+    }
+    #right1 {
+        background-color: gold;
+        margin-left: 100px;
+        height: 100%;
+    }
+    #container2 {
+        display: flex;
+    }
+    #left2 {
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: 100px;
+
+        background-color: pink;
+    }
+    #right2 {
+        background-color: aquamarine;
+        flex: auto;
+        height: 100%;
+    }
+</style>
+<body>
+    <div class="container">
+        <div id="left1">
+            left panel 1
+        </div>
+        <div id="right1">
+            FLOAT: right 1: margin-left: 100px;
+        </div>
+    </div>
+    <div class="container" id="container2">
+        <div id="left2">
+            left panel 2
+        </div>
+        <div id="right2">
+            FLEX: right 1: flex: auto;
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator</title>
+</head>
+<body>
+    <script>
+        /**
+         * Generator核心语法
+         * 1. 定义生成器函数
+         * 2. 获取Generator对象
+         * 3. next方法
+         * 4. for of
+         * */
+
+        // 1. 定义生成器函数
+        function* myGenerator() {
+            console.log('Starts!');
+            yield "hello"
+            yield "hello2"
+            yield "bye"
+        }
+
+        // 2. 获取Generator对象
+        const g = myGenerator();
+
+        // 3. next方法
+        // {value: yield之后的值, done: false/true}
+        // done：是否执行完毕，false可以继续，true执行完毕
+        // value：yield后的值
+
+        for  (const iterator of g) {
+            console.log(iterator);
+        }
+    </script>
+</body>
+</html>

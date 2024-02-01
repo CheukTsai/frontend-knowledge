@@ -24,10 +24,10 @@ async function test() {
           resolve(42);
         }, 100);
       });
-      const p1 = new Promise((resolve, reject) => {
+      const p1 = new Promise((resolve) => {
         setTimeout(() => {
-          reject('Err!');
-        }, 100);
+          resolve(41);
+        }, 99);
       });
       
       const result = await promiseRace([p0, p1]); 

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>hello world</h2>
+    <script>
+        // `use strict`
+        // console.log(this)
+
+        // function func() {
+        //     'use strict';
+        //     console.log(this); // undefined
+        // }
+        // func()
+
+        const food = {
+            name: "burger",
+            eat: eat
+        }
+        function eat() {
+            console.log(this)
+        }
+
+        food.eat()
+
+        // -------- 2. assign this --------
+        function func(numA, numB) {
+            console.log(this)
+            console.log(numA, numB)
+        }
+
+        const person = {
+            name: 'Tsai'
+        }
+
+        // 2.1 bind
+        // const bindFunc = func.bind(person, 666);
+        // bindFunc(888)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    html, body {
+        height: 100%;
+    }
+    body {
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        height: 50%;
+        /* width: 100%; */
+        border: 10px black solid;
+    }
+    p {
+        padding: 0;
+        margin: 0;
+    }
+
+    /* 利用float left和float right */
+    #left1 {
+        float: left;
+        height: 100%;
+        width: 100px;
+        background-color: tomato;
+    }
+    #right1 {
+        float: right;
+        height: 100%;
+        width: 100px;
+        background-color: tomato;
+    }
+    #middle1 {
+        background-color: gold;
+        margin-left: 100px;
+        margin-right: 100px;
+        height: 100%;
+    }
+
+    /* 利用flex，左右flex-basis控制在100px，并且不再shrink或grow，中间flex：auto */
+    #container2 {
+        display: flex;
+    }
+    #left2 {
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: 100px;
+
+        background-color: pink;
+    }
+    #middle2 {
+        background-color: aquamarine;
+        flex: auto;
+        height: 100%;
+    }
+    #right2 {
+        flex-shrink: 0;
+        flex-grow: 0;
+        flex-basis: 100px;
+
+        background-color: pink;
+    }
+
+    /* 利用圣杯布局，父元素负padding */
+    #container3 {
+        box-sizing: border-box; 
+        padding: 0 100px;
+        width: 100%;
+        overflow: hidden;
+    }
+    #middle3 {
+        position: relative;
+        float: left;
+        background-color: tomato;
+        height: 100%;
+        width: 100%;
+    }
+
+    #left3 {
+        position: relative;
+        float: left;
+        width: 100px;
+        margin-left: -100%;
+        left: -100px;
+        height: 100%;
+        background-color: gold;
+    }
+    
+    #right3 {
+        position: relative;
+        float: left;
+        right: -100px;
+        margin-left: -100px;
+        width: 100px;
+        height: 100%;
+        background-color: gold;
+    }
+
+    
+</style>
+<body>
+    <div class="container">
+        <div id="left1">
+        </div>
+        <div id="right1">
+        </div>
+        <div id="middle1">
+            <p>一定要注意，顺序是left和right在middle前，否则会被middle会占住他们的位置</p>
+        </div>
+        
+    </div>
+    <div class="container" id="container2">
+        <div id="left2">
+            left panel 2
+        </div>
+        <div id="middle2">
+            FLEX:  flex: auto;
+        </div>
+        <div id="right2">
+            right panel 2
+        </div>
+    </div>
+    <div class="container" id="container3">
+        <div id="middle3">
+            圣杯布局
+        </div>
+        <div id="left3">
+            left panel 3
+        </div>
+
+        <div id="right3">
+            right panel 3
+        </div>
+    </div>
+</body>
+</html>
